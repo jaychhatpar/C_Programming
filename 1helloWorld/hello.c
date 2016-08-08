@@ -13,11 +13,48 @@ extern void func();
 void funct(); //function declaration
 int l = 47;
 
+int function()
+{
+	int i = 0;
+	printf("This is an example of integer function returning integer value.\n");
+	i+=25;
+	return i;
+}
+
+int functionByValue(int x) //Pass by value
+{
+	int i = 0;
+	printf("This is an example of integer function returning integer value.\n");
+	i+=x;
+	return i;
+}
+
+
+int functionByRef(int *x) //Pass by value
+{
+	int i = 0;
+	*x=100;
+	printf("This is an example of integer function returning integer value.\n");
+	i+=*x;
+	return i;
+}
+
+
 int main( int argc, char ** argv )
 { //Here the execution begins.
 	func();
 	funct();
+	printf("The value of the integer function is %d\n", function());
 	printf("External varialble is %d\n", var);
+
+	int z = functionByValue(50);
+	printf("The function by value is %d\n",z);
+
+	int u = 55;
+	int v = functionByRef(&u);
+	printf("The returned value from functionByRef is %d\n",u);
+	printf("The returned value from functionByRef is %d\n",v);
+
 	int x = printf("Hello, World!\n"); //this is another way comment in a line
 	printf("My name is Jayesh Chhatpar!\n");
 	printf("Embedded Systems!\n");
@@ -145,13 +182,73 @@ int main( int argc, char ** argv )
 			break;
 		}
 
+		/*********While Loop***********/
+		int xx=5;
+		while (xx>0)// you can also perform decrement while(--x) or while (x--) and you will get different results.
+		{
+			printf("xx is %d\n",xx);
+			--xx;
+		}
+		/*********Do While Loop***********/
+		printf("\n");
+		int yy=7;
+		do
+		{
+			printf("yy is %d\n",yy);
+			--yy;
+		}while(yy);
+
+		/*********For Loop***********/
+		int zz = 5;
+
+		for (zz =5; zz; --zz) // first clause initializer, 2nd clause is while control, do this at this at the end of loop
+		{
+			printf("zz is %d\n",zz);
+		}
+
+		/*********For Loop using pointers***********/
+
+		int ia[]={1,2,3,4,5,0};
+		int *ip=ia;
+		for (*ip=ia;*ip;++ip)
+		{
+			printf("value = %d\n",*ip);
+		}
+
+		/*********Branch Controls - goto, break and continue ***********/ //Be careful of their usage. it shows flawed logic.
+
+		//Goto
+		printf("Before the goto.\n");
+		goto target;
+		printf("After the goto.\n");
+		target:
+		printf("After the target.\n");
+
+		//Break
+		int h=0;
+		for(h=0;h<10;++h)
+		{
+			if(h==5) break; //breaks out of the loop
+			printf("h is %d\n",h);
+		}
+
+		//Continue
+		int g=0;
+		for(g=0;g<10;++g)
+		{
+			if(g==5) continue; //when loop reaches 5 it will skip the next line and go to the next iteration of the loop
+			printf("g is %d\n",g);
+		}
+
+
+
 
 		return 0;
 }
 
 void funct()
 {
-	printf("This is a function after main. It's function declaration is before main.");
+	printf("This is a function after main. It's function declaration is before main.\n");
 }
 
 
